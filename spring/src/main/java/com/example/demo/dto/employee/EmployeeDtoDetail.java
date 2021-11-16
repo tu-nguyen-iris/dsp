@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.example.demo.dto.employee;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,15 +12,14 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDto  {
+public class EmployeeDtoDetail {
     private Long employeeId;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
     private Date hireDate;
-    private Long jobId;
+    private String jobTitle;
     private BigDecimal salary;
-    private Long managerId;
-    private Long departmentId;
+    private String departmentName;
 }

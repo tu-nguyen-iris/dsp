@@ -32,13 +32,6 @@ public class Employees {
     @JoinColumn(name = "department_id",referencedColumnName = "departmentId")
     private Departments departmentId;
 
-
-    @Column
-    @Getter
-    @Setter
-    private Long managerId;
-
-
     @Column
     @Getter
     @Setter

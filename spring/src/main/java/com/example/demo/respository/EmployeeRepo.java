@@ -24,8 +24,6 @@ public interface EmployeeRepo extends JpaRepository<Employees, Long> {
 //    Object save(Employees employees);
     Page<Employees> findAll(Pageable pageable);
 
-    List<Employees> findEmployeesByManagerId(Long id);
-
     Employees getEmployeesByEmployeeId(Long id);
 //    @Query(value = "")
 //    void addEmployee (Employees employees);

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "regions")
@@ -19,6 +20,11 @@ public class Regions {
     @Getter
     @Setter
     private String regionName;
+
+    @Setter
+    @Getter
+    @OneToMany(mappedBy = "regionId")
+    private List<Countries> countriesList;
 
 
 }

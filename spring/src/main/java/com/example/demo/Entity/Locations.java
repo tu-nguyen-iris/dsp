@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "locations")
@@ -42,4 +43,9 @@ public class Locations {
     @Getter
     private Countries countryId;
 
+
+    @Setter
+    @Getter
+    @OneToMany(mappedBy = "locationId")
+    private List<Departments> departmentsList;
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "countries")
@@ -21,6 +22,11 @@ public class Countries {
     @Setter
     @Getter
     private String country_name;
+
+    @Setter
+    @Getter
+    @OneToMany(mappedBy = "locationId")
+    private List<Locations> locationList;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")

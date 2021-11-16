@@ -1,10 +1,9 @@
 package com.example.demo.services.iml;
 
-import com.example.demo.Entity.Departments;
 import com.example.demo.Entity.Employees;
-import com.example.demo.Entity.Jobs;
 import com.example.demo.config.ResponseModified;
-import com.example.demo.dto.EmployeeDto;
+import com.example.demo.dto.employee.EmployeeDto;
+import com.example.demo.dto.employee.EmployeeDtoDetail;
 import com.example.demo.mapper.EmployeeMaper;
 import com.example.demo.respository.DepartmentsRepo;
 import com.example.demo.respository.EmployeeRepo;
@@ -16,7 +15,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -34,27 +32,31 @@ public class EmployeeSerIml implements EmployeeSevice {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private EmployeeMaper employeeMaper;
+
     /**
      * @param response
      * @param employee
      * @param tp
      * @return
      */
-    private Map<String, Object> _getStringObjectMap(Map<String, Object> response, List<EmployeeDto> employee, Page<Employees> tp) {
-        for (Employees employees : tp) {
-            employee.add(EmployeeMaper.toEmployeeDto(employees));
-        }
-        response.put("data", employee);
-        response.put("currentPage", tp.getNumber());
-        response.put("totalItems", tp.getTotalElements());
-        response.put("totalPages", tp.getTotalPages());
+    private Map<String, Object> _getStringObjectMap(Map<String, Object> response, List<EmployeeDtoDetail> employee, Page<Employees> tp) {
+
+            for (Employees employees : tp) {
+                employee.add(employeeMaper.toEmployeeDetailDto(employees));
+            }
+            response.put("data", employee);
+            response.put("currentPage", tp.getNumber());
+            response.put("totalItems", tp.getTotalElements());
+            response.put("totalPages", tp.getTotalPages());
         return response;
     }
 
 
     public Map<String, Object> findAllEmployeeByName(Pageable page, String name) {
         Map<String, Object> response = new HashMap<>();
-        List<EmployeeDto> employee = new ArrayList<>();
+        List<EmployeeDtoDetail> employee = new ArrayList<>();
         Page<Employees> tp = employeeRepo.getAllWithName(page, name);
         return _getStringObjectMap(response, employee, tp);
     }
@@ -62,7 +64,7 @@ public class EmployeeSerIml implements EmployeeSevice {
     @Override
     public Map<String, Object> findAll(Pageable pageable) {
         Map<String, Object> response = new HashMap<>();
-        List<EmployeeDto> employee = new ArrayList<>();
+        List<EmployeeDtoDetail> employee = new ArrayList<>();
         Page<Employees> tp = employeeRepo.findAll(pageable);
         return _getStringObjectMap(response, employee, tp);
     }
@@ -71,8 +73,7 @@ public class EmployeeSerIml implements EmployeeSevice {
     public boolean deleteByEmployeeId(Long Id) {
         try {
             Optional<Employees> employees = employeeRepo.findById(Id);
-            List<Employees> employeesList = employeeRepo.findEmployeesByManagerId(Id);
-            if (employees.isPresent() && employeesList.size() == 0) {
+            if (employees.isPresent()) {
                 employeeRepo.deleteEmployees(Id);
                 return true;
             }
@@ -84,12 +85,12 @@ public class EmployeeSerIml implements EmployeeSevice {
     }
 
     @Override
-    public EmployeeDto getDetailEmployees(Long id) {
+    public EmployeeDtoDetail getDetailEmployees(Long id) {
         try {
             Employees employees;
             employees = employeeRepo.getEmployeesByEmployeeId(id);
             if (employees != null) {
-                return EmployeeMaper.toEmployeeDto(employees);
+                return employeeMaper.toEmployeeDetailDto(employees);
             }
             return null;
         } catch (DataAccessException e) {

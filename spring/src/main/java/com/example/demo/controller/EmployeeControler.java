@@ -1,7 +1,7 @@
 package com.example.demo.controller;
-import com.example.demo.Entity.Employees;
 import com.example.demo.config.ResponseModified;
-import com.example.demo.dto.EmployeeDto;
+import com.example.demo.dto.employee.EmployeeDto;
+import com.example.demo.dto.employee.EmployeeDtoDetail;
 import com.example.demo.services.EmployeeSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -23,8 +23,7 @@ public class EmployeeControler {
     @GetMapping
     public ResponseEntity getAllProductByName(@RequestParam(value = "page") Integer page, @RequestParam(value = "name") String name) {
         try {
-            System.out.println("asdas");
-            Pageable pageable = PageRequest.of((page - 1 < 0 ? page : page - 1), 10);
+           Pageable pageable = PageRequest.of((page - 1 < 0 ? page : page - 1), 10);
             Map<String, Object> response;
             if (name == null || name.equals("")) {
                 response = employeeSevice.findAll(pageable);
@@ -45,7 +44,7 @@ public class EmployeeControler {
     @GetMapping("/{id}")
     public ResponseEntity getDetailEmployee(@PathVariable Long id){
             try{
-                EmployeeDto data = employeeSevice.getDetailEmployees(id);
+                EmployeeDtoDetail data = employeeSevice.getDetailEmployees(id);
                 Map<String,Object> res = new HashMap<>();
                 if(data == null){
                     return new ResponseEntity<>(new ResponseModified(0, "EMPLOYEES NOT FOUND!", null),HttpStatus.OK);
