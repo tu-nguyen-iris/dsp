@@ -2,7 +2,7 @@ import {message} from "ant-design-vue";
 import axios from "axios";
 
 class Services {
-    public link: string = "http://localhost:8080/api/v1"
+    public link: string = "http://localhost:8081/api/v1"
     _exData = (data: any) => {
         if (data && data.data.code !== 1) {
             message.error(data.data.message)

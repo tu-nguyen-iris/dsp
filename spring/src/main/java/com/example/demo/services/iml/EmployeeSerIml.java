@@ -42,7 +42,6 @@ public class EmployeeSerIml implements EmployeeSevice {
      * @return
      */
     private Map<String, Object> _getStringObjectMap(Map<String, Object> response, List<EmployeeDtoDetail> employee, Page<Employees> tp) {
-
             for (Employees employees : tp) {
                 employee.add(employeeMaper.toEmployeeDetailDto(employees));
             }

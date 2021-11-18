@@ -28,6 +28,7 @@ public class EmployeeMaper {
 
     /**
      * using orm query
+     *
      * @param employee
      * @return
      */
@@ -40,6 +41,8 @@ public class EmployeeMaper {
         employeeDto.setPhoneNumber(employee.getPhoneNumber());
         employeeDto.setHireDate(employee.getHireDate());
         employeeDto.setJobTitle(employee.getJobId().getJobTitle());
+        employeeDto.setJobId(employee.getJobId().getJobId());
+        employeeDto.setDepartmentId(employee.getDepartmentId().getDepartmentId());
         employeeDto.setDepartmentName(employee.getDepartmentId().getDepartmentName());
         employeeDto.setSalary(employee.getSalary());
         return employeeDto;

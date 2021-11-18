@@ -22,4 +22,7 @@ public class EmployeeDtoDetail {
     private String jobTitle;
     private BigDecimal salary;
     private String departmentName;
+    private Long departmentId;
+    private Long jobId;
+
 }

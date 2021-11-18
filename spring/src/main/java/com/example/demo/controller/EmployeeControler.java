@@ -14,7 +14,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping(value = "/api/v1/employees")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 public class EmployeeControler {
 
     @Autowired
@@ -35,7 +35,6 @@ public class EmployeeControler {
                 return new ResponseEntity<>(res, HttpStatus.OK);
             }
         } catch (Exception e) {
-            System.out.println(e);
             return new ResponseEntity<>(new ResponseModified(0, "ERROR", null), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
@@ -52,8 +51,6 @@ public class EmployeeControler {
                     res.put("detail",data);
                     return new ResponseEntity<>(new ResponseModified(1, "SUCCESS", res),HttpStatus.OK);
                 }
-
-
             }catch (Exception e){
                 return new ResponseEntity<>(new ResponseModified(0, "ERROR", null),HttpStatus.EXPECTATION_FAILED);
             }
