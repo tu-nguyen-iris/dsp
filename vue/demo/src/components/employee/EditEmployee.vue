@@ -11,7 +11,6 @@
       <a-button style="margin-right: 8px" @click="onClose">Cancel</a-button>
       <a-button type="primary" @click="onClose">Submit</a-button>
     </template>
-    <!--   Body-->
     <a-form :rules="rules"
             ref="formRef" :model="formState" :label-col="labelCol" :wrapper-col="wrapperCol">
       <a-form-item name="firstName" label="First name">
@@ -43,15 +42,18 @@
         <a-input v-model:value="formState.salary"/>
       </a-form-item>
 
-      <a-form-item name="jobId" label="Job">
-        <a-input v-model:value="formState.jobId"/>
+      <a-form-item label="Jobs">
+        <a-select v-model:value="formState.jobId" placeholder="please select your job">
+          <a-select-option v-for="item in lstJob" :value="item.key">{{ item.value }}</a-select-option>
+        </a-select>
       </a-form-item>
-
       <a-form-item name="departmentId" label="Department name">
-        <a-input v-model:value="formState.departmentId"/>
+        <a-select v-model:value="formState.departmentId" placeholder="please select your job">
+          <a-select-option v-for="item in lstDepartments" :value="item.key">{{ item.value }}</a-select-option>
+        </a-select>
       </a-form-item>
       <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-        <a-button type="primary" @click.prevent="onSubmit">Create</a-button>
+        <a-button type="primary" @click.prevent="onSubmit">Done</a-button>
       </a-form-item>
     </a-form>
   </a-drawer>
@@ -63,6 +65,7 @@ import {Dayjs} from 'dayjs';
 import Services from "../../services";
 
 interface FormState {
+  employeeId: number,
   firstName: string,
   lastName: string,
   hireDate: bigint,
@@ -76,7 +79,40 @@ interface FormState {
 export default defineComponent({
   props: ['id'],
   setup(props) {
+    const lstJob = ref<object>()
+    const lstDepartments = ref<object>()
+
+    const _getListJob = async () => {
+      try {
+        const res = await Services._getAllJobs()
+        let newData = res.data.data.map(item => {
+          return {
+            key: item.jobId,
+            value: item.jobTitle
+          }
+        })
+        lstJob.value = newData
+      } catch (e: any) {
+        console.log(e)
+      }
+    }
+    const _getLisTDepartments = async () => {
+      try {
+        const res = await Services._getAllDepartments()
+        let newData = res.data.data.map(item => {
+          return {
+            key: item.id,
+            value: item.departmentName
+          }
+        })
+        lstDepartments.value = newData
+      } catch (e: any) {
+        console.log(e)
+      }
+    }
     onMounted(() => {
+      _getLisTDepartments()
+      _getListJob()
       _getDetailEmployee([props.id])
     })
     const _getDetailEmployee = async (ids: any) => {
@@ -90,7 +126,6 @@ export default defineComponent({
         formState.jobId = res.data.detail.jobId;
         formState.phoneNumber = res.data.detail.phoneNumber;
         formState.email = res.data.detail.email;
-
       } catch (e) {
         console.log(e)
       }
@@ -171,22 +206,24 @@ export default defineComponent({
     };
     const formRef = ref();
     const formState: UnwrapRef<FormState> = reactive({
-      firstName: null,
-      lastName: null,
-      hireDate: null,
-      salary: null,
-      departmentId: null,
-      jobId: null,
-      phoneNumber: null,
-      email: null,
+      employeeId: Number(props.id),
+      firstName: '',
+      lastName: '',
+      hireDate: '',
+      salary: '',
+      departmentId: '',
+      jobId: '',
+      phoneNumber: '',
+      email: '',
     });
     const onSubmit = () => {
       formRef.value
           .validate()
-          .then(() => {
-            console.log('values', formState, toRaw(formState));
+          .then(async () => {
+            const res = await Services._editEmployees(toRaw(formState))
+            console.log('values', formState);
           })
-          .catch((error : object) => {
+          .catch((error: object) => {
             console.log('error', error);
           });
     };
@@ -210,7 +247,9 @@ export default defineComponent({
       formState,
       onSubmit,
       rules,
-      formRef
+      formRef,
+      lstJob,
+      lstDepartments
     };
   },
 });

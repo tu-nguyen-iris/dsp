@@ -1,4 +1,4 @@
-package com.example.demo.services.iml;
+package com.example.demo.services.Employees;
 
 import com.example.demo.Entity.Employees;
 import com.example.demo.config.ResponseModified;
@@ -8,7 +8,7 @@ import com.example.demo.mapper.EmployeeMaper;
 import com.example.demo.respository.DepartmentsRepo;
 import com.example.demo.respository.EmployeeRepo;
 import com.example.demo.respository.JobsRepo;
-import com.example.demo.services.EmployeeSevice;
+import com.example.demo.services.Employees.EmployeeSevices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class EmployeeSerIml implements EmployeeSevice {
+public class EmployeeSerIml implements EmployeeSevices {
     @Autowired
     private EmployeeRepo employeeRepo;
 
@@ -42,13 +42,13 @@ public class EmployeeSerIml implements EmployeeSevice {
      * @return
      */
     private Map<String, Object> _getStringObjectMap(Map<String, Object> response, List<EmployeeDtoDetail> employee, Page<Employees> tp) {
-            for (Employees employees : tp) {
-                employee.add(employeeMaper.toEmployeeDetailDto(employees));
-            }
-            response.put("data", employee);
-            response.put("currentPage", tp.getNumber());
-            response.put("totalItems", tp.getTotalElements());
-            response.put("totalPages", tp.getTotalPages());
+        for (Employees employees : tp) {
+            employee.add(employeeMaper.toEmployeeDetailDto(employees));
+        }
+        response.put("data", employee);
+        response.put("currentPage", tp.getNumber());
+        response.put("totalItems", tp.getTotalElements());
+        response.put("totalPages", tp.getTotalPages());
         return response;
     }
 
@@ -103,31 +103,33 @@ public class EmployeeSerIml implements EmployeeSevice {
         try {
             //save, persist, update, merge, saveOrUpdate ?
             // that is insert data into database
-            if (employeeDto.getEmployeeId() == null) {
-                Employees employees = modelMapper.map(employeeDto, Employees.class);
-                employees.setJobId(jobsRepo.getById(employeeDto.getJobId()));
-                employees.setDepartmentId(department.getById(employeeDto.getDepartmentId()));
-                employeeRepo.save(employees);
-                return new ResponseModified(1, "SUCCESS", null);
-            } else {
-                if (employeeRepo.existsById(employeeDto.getEmployeeId())) {
-                    Employees employees = employeeRepo.getEmployeesByEmployeeId(employeeDto.getEmployeeId());
-                    employees.setJobId(jobsRepo.getById(employeeDto.getJobId()));
-                    employees.setDepartmentId(department.getById(employeeDto.getDepartmentId()));
-                    employees.setFirstName(employeeDto.getFirstName());
-                    employees.setLastName(employeeDto.getLastName());
-                    employees.setSalary(employeeDto.getSalary());
-                    employees.setEmail(employeeDto.getEmail());
-                    employees.setHireDate(employeeDto.getHireDate());
-                    employeeRepo.save(employees);
-                    return new ResponseModified(1, "SUCCESS", null);
-                }
-                return new ResponseModified(0, "EMPLOYEE DO NOT EXIST", null);
-            }
+            Employees employees = modelMapper.map(employeeDto, Employees.class);
+            employees.setJobId(jobsRepo.getById(employeeDto.getJobId()));
+            employees.setDepartmentId(department.getById(employeeDto.getDepartmentId()));
+            employeeRepo.save(employees);
+            return new ResponseModified(1, "SUCCESS", null);
         } catch (DataAccessException e) {
             return new ResponseModified(0, "ERROR", null);
         }
     }
 
+    public ResponseModified editEmployee(EmployeeDto employeeDto) {
+        try {
+            Employees employees = employeeRepo.findById(employeeDto.getEmployeeId())
+                    .orElseThrow(() -> new ResponseModified(0, "ERROR", null));
+            System.out.println(employees);
+            employees.setJobId(jobsRepo.getById(employeeDto.getJobId()));
+            employees.setDepartmentId(department.getById(employeeDto.getDepartmentId()));
+            employees.setFirstName(employeeDto.getFirstName());
+            employees.setLastName(employeeDto.getLastName());
+            employees.setSalary(employeeDto.getSalary());
+            employees.setEmail(employeeDto.getEmail());
+            employees.setHireDate(employeeDto.getHireDate());
+            employeeRepo.save(employees);
+            return new ResponseModified(1, "SUCCESS", null);
+        } catch (DataAccessException | ResponseModified e) {
+            return new ResponseModified(0, "ERROR", null);
+        }
+    }
 
 }

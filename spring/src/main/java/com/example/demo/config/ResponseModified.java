@@ -18,8 +18,8 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseModified {
+public class ResponseModified extends Exception {
     private int code;
     private String message;
-    Map<String,Object> data = new HashMap<>();
+    Map<String, Object> data = new HashMap<>();
 }

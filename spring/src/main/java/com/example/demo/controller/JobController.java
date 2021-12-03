@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.config.ResponseModified;
 import com.example.demo.dto.JobDto.JobDtoDetail;
-import com.example.demo.services.JobService;
+import com.example.demo.services.Jobs.JobsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,16 +21,17 @@ import java.util.Map;
 @RequestMapping(value = "/api/v1/job")
 @CrossOrigin(origins = "http://localhost:8081")
 public class JobController {
+
     @Autowired
-    private JobService jobService;
+    private JobsServices jobsServices;
 
     @GetMapping
     public ResponseEntity getAlljob() {
         try {
-            List<JobDtoDetail> res = jobService.getAllJob();
-            Map<String, Object> response= new HashMap<>();
-            response.put("data",res);
-            return new ResponseEntity<>(new ResponseModified(1, "SUCCESS", res, HttpStatus.OK);
+            List<JobDtoDetail> res = jobsServices.getAllJob();
+            Map<String, Object> response = new HashMap<>();
+            response.put("data", res);
+            return new ResponseEntity<>(new ResponseModified(1, "SUCCESS", response), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(new ResponseModified(0, "ERROR", null), HttpStatus.INTERNAL_SERVER_ERROR);
         }

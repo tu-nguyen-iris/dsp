@@ -63,5 +63,4 @@ public class Employees {
     @Setter
     private BigDecimal salary;
 
-
 }

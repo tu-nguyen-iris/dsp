@@ -12,7 +12,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDto  {
+public class EmployeeDto {
     private Long employeeId;
     private String firstName;
     private String lastName;
