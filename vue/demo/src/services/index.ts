@@ -41,8 +41,7 @@ class Services {
     }
     _getAllDepartments = async () => {
         try {
-            let res = await axios.get(this.link + '/departments',
-            )
+            let res = await axios.get(this.link + '/departments',)
             this._exData(res)
             return res.data
         } catch (error) {

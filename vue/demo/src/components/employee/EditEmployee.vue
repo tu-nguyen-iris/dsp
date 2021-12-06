@@ -76,6 +76,11 @@ interface FormState {
   phoneNumber: string
 }
 
+interface jobState {
+  jobId: number,
+  jobTitle: string
+}
+
 export default defineComponent({
   props: ['id'],
   setup(props) {
@@ -85,7 +90,7 @@ export default defineComponent({
     const _getListJob = async () => {
       try {
         const res = await Services._getAllJobs()
-        let newData = res.data.data.map(item => {
+        let newData = res.data.data.map((item: jobState) => {
           return {
             key: item.jobId,
             value: item.jobTitle
