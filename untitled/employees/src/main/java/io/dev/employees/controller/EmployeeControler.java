@@ -19,6 +19,12 @@ import java.util.Map;
 //@CrossOrigin(origins = "http://localhost:8081")
 public class EmployeeControler {
 
+
+    @GetMapping("/test")
+    public ResponseEntity<String> hello() {
+        return ResponseEntity.ok("Xin chào");
+    }
+
     @Autowired
     private EmployeeSevices employeeSevices;
 
