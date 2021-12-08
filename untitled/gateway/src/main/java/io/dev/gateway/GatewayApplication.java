@@ -6,13 +6,10 @@ import io.dev.gateway.filters.PreFilter;
 import io.dev.gateway.filters.RouteFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@EnableEurekaClient
 @EnableZuulProxy
 public class GatewayApplication {
 

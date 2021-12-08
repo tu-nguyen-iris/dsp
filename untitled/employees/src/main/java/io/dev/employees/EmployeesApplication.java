@@ -3,15 +3,12 @@ package io.dev.employees;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
-@EnableEurekaClient
 public class EmployeesApplication {
     /**
      * Support convert Dto to entity and reverse
@@ -25,6 +22,12 @@ public class EmployeesApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EmployeesApplication.class, args);
+
+        List<String> data = Arrays.asList("dasd", "sdasd", "asdasdsd");
+        data.stream().map(item -> item.toLowerCase());
+        System.out.println(data.stream().map(item -> item.toLowerCase()));
+
+
     }
 
 }

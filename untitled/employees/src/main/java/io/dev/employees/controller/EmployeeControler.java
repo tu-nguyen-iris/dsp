@@ -15,15 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/v1/employees")
+@RequestMapping(value = "/employees")
 //@CrossOrigin(origins = "http://localhost:8081")
 public class EmployeeControler {
-
-
-    @GetMapping("/test")
-    public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Xin chào");
-    }
 
     @Autowired
     private EmployeeSevices employeeSevices;

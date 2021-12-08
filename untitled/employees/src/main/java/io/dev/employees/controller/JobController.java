@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/v1/job")
+@RequestMapping(value = "/job")
 @CrossOrigin(origins = "http://localhost:8081")
 public class JobController {
 
