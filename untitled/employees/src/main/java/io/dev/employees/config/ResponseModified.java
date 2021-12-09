@@ -20,5 +20,5 @@ import java.util.Map;
 public class ResponseModified {
     private int code;
     private String message;
-    Map<String, Object> data = new HashMap<>();
+    Map<String, Object> response = new HashMap<>();
 }

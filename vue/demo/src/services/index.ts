@@ -2,19 +2,32 @@ import {message} from "ant-design-vue";
 import axios from "axios";
 
 class Services {
-    public link: string = "http://localhost:8081/api/v1"
+    public link: string = "http://localhost:8762/api/"
     _exData = (data: any) => {
-        if (data && data.data.code !== 1) {
+        if (data && data.data.code == 0) {
             message.error(data.data.message)
+        } else if (data && data.data.code == -1) {
+            message.error(data.data.message)
+            window.location.href = '/login'
         }
     }
+
+    _initHeader<AxiosRequestHeaders>() {
+        return {
+            'Content-Type': 'application/json',
+            token: localStorage.getItem('token') || ''
+        }
+    }
+
     _getAllEmployee = async (obj: object) => {
         try {
-            let res = await axios.get(this.link + '/employees',
-                {params: {...obj}}
+            let res = await axios.get(this.link + 'users/employees',
+                {
+                    params: {...obj},
+                    headers: this._initHeader()
+                }
             )
-            this._exData(res)
-            return res.data
+            return res.data.response
         } catch (error) {
             throw error
         }
@@ -22,9 +35,9 @@ class Services {
 
     _getDetailEmployee = async (id: bigint) => {
         try {
-            let res = await axios.get(this.link + `/employees/${id}`)
+            let res = await axios.get(this.link + `users/employees/${id}`)
             this._exData(res)
-            return res.data
+            return res.data.response
         } catch (error) {
             throw error
         }

@@ -33,12 +33,12 @@ public class Employees {
     @JoinColumn(name = "department_id", referencedColumnName = "departmentId")
     private Departments departmentId;
 
-    @Column
+    @Column(nullable = false)
     @Getter
     @Setter
     private String firstName;
 
-    @Column
+    @Column(nullable = false)
     @Getter
     @Setter
     private String lastName;

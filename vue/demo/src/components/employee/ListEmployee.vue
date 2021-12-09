@@ -30,10 +30,10 @@
 </template>
 <script lang="ts">
 import { computed, defineComponent, onMounted, watchEffect } from "vue";
-import Services from "./../services";
+import Services from "../../services";
 import { ref } from "vue";
 import { message } from "ant-design-vue";
-import router from "../routes";
+import router from "../../routes";
 
 const columns = [
   {
@@ -109,11 +109,11 @@ export default defineComponent({
       try {
         const resp = await Services._getAllEmployee(params);
         loadingTable.value = false
-        data.value = resp.data.data;
+        data.value = resp.data;
         panigation.value = {
           ...panigation.value,
-          totalPage: resp.data.totalPages,
-          toTalItem: resp.data.totalItems
+          totalPage: resp.totalPages,
+          toTalItem: resp.totalItems
         }
       } catch (error) {
         loadingTable.value = false
