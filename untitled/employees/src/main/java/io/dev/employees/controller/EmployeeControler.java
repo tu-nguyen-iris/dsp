@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/employees")
-//@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8762")
 public class EmployeeControler {
 
     @Autowired
@@ -37,7 +37,7 @@ public class EmployeeControler {
                 return new ResponseEntity<>(res, HttpStatus.OK);
             }
         } catch (Exception e) {
-            return new ResponseEntity<>(new ResponseModified(0, "ERROR", null), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(new ResponseModified(0, "ERROR", null), HttpStatus.BAD_REQUEST);
         }
 
     }
