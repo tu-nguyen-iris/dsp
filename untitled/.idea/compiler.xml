@@ -9,7 +9,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="employees" />
         <module name="gateway" />
-        <module name="clientservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
