@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -91,5 +92,20 @@ public class EmployeeControler {
         } catch (Exception e) {
             return new ResponseEntity<>(new ResponseModified(0, "ERROR", null), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping("/delete_employee")
+    public ResponseEntity delMultiUser(@RequestBody List<Long> lst_employees) {
+        try {
+            boolean result = employeeSevices.delMultiEmployees(lst_employees);
+            if (result) {
+                return new ResponseEntity(new ResponseModified(1, "SUCCESS", null), HttpStatus.OK);
+            }
+            return new ResponseEntity(new ResponseModified(0, "ERROR", null), HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity(new ResponseModified(0, "ERROR", null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 }

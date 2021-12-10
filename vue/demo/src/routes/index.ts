@@ -36,11 +36,6 @@ const routes = [
         ]
     },
     {path: '/:pathMatch(.*)*', component: Page404},
-    // {
-    //     path: "/detail/employee/:id",
-    //     name: "employeeDetail",
-    //     component: DetailEmployee,
-    // },
 ];
 
 const router = createRouter({

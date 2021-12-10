@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class EmployeeSerIml implements EmployeeSevices {
@@ -126,8 +127,23 @@ public class EmployeeSerIml implements EmployeeSevices {
             employees.setHireDate(employeeDto.getHireDate());
             employeeRepo.save(employees);
             return new ResponseModified(1, "SUCCESS", null);
-        } catch (DataAccessException  e) {
+        } catch (DataAccessException e) {
+            System.out.println(e);
             return new ResponseModified(0, "ERROR", null);
+        }
+    }
+
+    @Override
+    public boolean delMultiEmployees(List<Long> lst_employees) {
+        try {
+            System.out.println(lst_employees.isEmpty());
+            if (lst_employees.isEmpty()) return false;
+            String lst_empoyees_str = lst_employees.stream().map(String::valueOf).collect(Collectors.joining(","));
+            employeeRepo.delMultiEmployees(lst_empoyees_str);
+            return true;
+        } catch (DataAccessException e) {
+            System.out.println(e);
+            return false;
         }
     }
 

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-@Transactional
 public interface EmployeeRepo extends JpaRepository<Employees, Long> {
 
     @Query(value = "SELECT * FROM employees WHERE first_name like %:name% or last_name like %:name%", nativeQuery = true)
@@ -23,11 +22,14 @@ public interface EmployeeRepo extends JpaRepository<Employees, Long> {
 
     Employees getEmployeesByEmployeeId(Long id);
 
-    //    @Query(value = "")
-//    void addEmployee (Employees employees);
+
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM employees WHERE employee_id = ?1", nativeQuery = true)
     void deleteEmployees(Long Id);
 
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM  employees where employee_id in ( 101,0 )", nativeQuery = true)
+    void delMultiEmployees(String lst_employees);
 }

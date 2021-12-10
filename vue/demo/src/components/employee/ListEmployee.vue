@@ -1,13 +1,14 @@
 <template>
+  <a-button @click="delEmployees(selectedRowKeys)" type="primary">Delete</a-button>
   <a-input-search
-    @search="onSearch"
-    class="search"
-    style="width:240px;"
-    v-model:value="name"
-    placeholder="Search"
-    allow-clear
-    />
-    <a-table
+      @search="onSearch"
+      class="search"
+      style="width:240px;"
+      v-model:value="name"
+      placeholder="Search"
+      allow-clear
+  />
+  <a-table
       :rowSelection="selectedRowKeys"
       :customRow="customRow"
       :scroll="{ y: 500 }"
@@ -15,26 +16,28 @@
       :loading="loadingTable"
       :columns="columns"
       :data-source="data"
-      >
-      <template #bodyCell="{ column, text }">
-        <template v-if="column.dataIndex === 'name'">{{ text.first }} {{ text.last }}</template>
-      </template>
-    </a-table>
-    <a-pagination
+  >
+    <template #bodyCell="{ column, text }">
+      <template v-if="column.dataIndex === 'name'">{{ text.first }} {{ text.last }}</template>
+    </template>
+  </a-table>
+  <a-pagination
       class="mt-5"
       v-model:current="panigation.current"
       @change="onChangePage"
       :total="panigation.toTalItem"
       show-less-items
-      />
+  />
 </template>
 <script lang="ts">
-import { computed, defineComponent, onMounted, watchEffect } from "vue";
+import {computed, defineComponent, h, onMounted, reactive, watchEffect, toRefs} from "vue";
 import Services from "../../services";
-import { ref } from "vue";
-import { message } from "ant-design-vue";
+import {ref} from "vue";
+import {message, notification} from "ant-design-vue";
 import router from "../../routes";
+import {SmileOutlined, WarningOutlined} from '@ant-design/icons-vue';
 
+type Key = string | number;
 const columns = [
   {
     title: "ID",
@@ -64,7 +67,7 @@ const columns = [
   },
   {
     title: "JOB TITLE",
-    dataIndex:"jobTitle"
+    dataIndex: "jobTitle"
   },
   {
     title: "SALARY",
@@ -92,17 +95,22 @@ export default defineComponent({
       toTalItem: 0
     })
     const lstDel = ref([])
+    const selectedRowKeys = {
+      onChange: (selectedRowKey: []) => {
+        lstDel.value = selectedRowKey
+      },
+    }
     const onChangePage = (e: number) => {
       loadingTable.value = true;
       panigation.value = ({
         ...panigation.value,
         current: e
       })
-      getAllData({ name: name.value, page: e });
+      getAllData({name: name.value, page: e});
     }
     const onSearch = (e: string) => {
       name.value = e
-      getAllData({ name: e, page: panigation.value.current })
+      getAllData({name: e, page: panigation.value.current})
     }
 
     const getAllData = async (params: APIParams) => {
@@ -132,14 +140,37 @@ export default defineComponent({
       };
     }
     onMounted(() => {
-      getAllData({ name: name.value, page: panigation.value.current });
+      getAllData({name: name.value, page: panigation.value.current});
     });
-    const selectedRowKeys = {
-      onChange: (selectedRowKey: []) => {
-        lstDel.value = selectedRowKey
-      },
-
+    console.log(lstDel)
+    const delEmployees = async () => {
+      try {
+        if (lstDel.value.length == 0) {
+          notification.open({
+            message: 'You must choose at least 1 employee to delete',
+            description:
+                'This is the content of demo hehe.',
+            icon: h(WarningOutlined, {style: 'color: red'}),
+            duration: 3,
+          });
+          return
+        }
+        let lst_employees = lstDel.value.map((item) => {
+          return data.value[item].employeeId
+        })
+        const res = await Services._delMultiusers(lst_employees)
+        notification.open({
+          message: 'Delete success',
+          description:
+              'This is the content of demo hehe.',
+          icon: h(SmileOutlined, {style: 'color: #108ee9'}),
+          duration: 3,
+        });
+      } catch (e) {
+        console.log(e)
+      }
     }
+
     return {
       name,
       data,
@@ -149,6 +180,7 @@ export default defineComponent({
       onChangePage,
       onSearch,
       customRow,
+      delEmployees,
       selectedRowKeys
     };
   },

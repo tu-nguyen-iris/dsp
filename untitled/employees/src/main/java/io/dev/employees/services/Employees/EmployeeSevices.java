@@ -6,6 +6,7 @@ import io.dev.employees.dto.employee.EmployeeDtoDetail;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -22,4 +23,5 @@ public interface EmployeeSevices {
 
     ResponseModified editEmployee(EmployeeDto employeeDto);
 
+    boolean delMultiEmployees(List<Long> lst_employees);
 }
