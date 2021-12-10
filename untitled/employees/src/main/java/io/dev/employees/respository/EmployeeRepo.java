@@ -16,8 +16,6 @@ public interface EmployeeRepo extends JpaRepository<Employees, Long> {
     @Query(value = "SELECT * FROM employees WHERE first_name like %:name% or last_name like %:name%", nativeQuery = true)
     Page<Employees> getAllWithName(Pageable pageable, @Param(value = "name") String name);
 
-    //    @Transactional
-//    Object save(Employees employees);
     Page<Employees> findAll(Pageable pageable);
 
     Employees getEmployeesByEmployeeId(Long id);
@@ -28,8 +26,8 @@ public interface EmployeeRepo extends JpaRepository<Employees, Long> {
     @Query(value = "DELETE FROM employees WHERE employee_id = ?1", nativeQuery = true)
     void deleteEmployees(Long Id);
 
-    @Transactional
     @Modifying
-    @Query(value = "DELETE FROM  employees where employee_id in ( 101,0 )", nativeQuery = true)
+    @Transactional
+    @Query(value = "DELETE FROM employees where employee_id in ( ?1 )", nativeQuery = true)
     void delMultiEmployees(String lst_employees);
 }

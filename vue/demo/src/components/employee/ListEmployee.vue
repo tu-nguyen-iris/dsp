@@ -1,5 +1,8 @@
 <template>
-  <a-button @click="delEmployees(selectedRowKeys)" type="primary">Delete</a-button>
+  <div class="d-flex btn_header">
+    <a-button @click="delEmployees(selectedRowKeys)" type="primary">Delete</a-button>
+    <AddEmployee/>
+  </div>
   <a-input-search
       @search="onSearch"
       class="search"
@@ -36,6 +39,7 @@ import {ref} from "vue";
 import {message, notification} from "ant-design-vue";
 import router from "../../routes";
 import {SmileOutlined, WarningOutlined} from '@ant-design/icons-vue';
+import AddEmployee from "./Form/AddEmployee.vue";
 
 type Key = string | number;
 const columns = [
@@ -80,6 +84,9 @@ const columns = [
 ];
 
 export default defineComponent({
+  components: {
+    AddEmployee
+  },
   setup(props) {
     type APIParams = {
       name: string;
@@ -115,6 +122,7 @@ export default defineComponent({
 
     const getAllData = async (params: APIParams) => {
       try {
+        loadingTable.value = true
         const resp = await Services._getAllEmployee(params);
         loadingTable.value = false
         data.value = resp.data;
@@ -142,7 +150,6 @@ export default defineComponent({
     onMounted(() => {
       getAllData({name: name.value, page: panigation.value.current});
     });
-    console.log(lstDel)
     const delEmployees = async () => {
       try {
         if (lstDel.value.length == 0) {
@@ -166,6 +173,7 @@ export default defineComponent({
           icon: h(SmileOutlined, {style: 'color: #108ee9'}),
           duration: 3,
         });
+        getAllData({name: name.value, page: panigation.value.current});
       } catch (e) {
         console.log(e)
       }
@@ -191,5 +199,9 @@ export default defineComponent({
   display: flex;
   margin-left: auto;
   margin-bottom: 30px;
+}
+.btn_header {
+  max-width: 160px;
+  margin-right: auto;
 }
 </style>

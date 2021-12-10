@@ -5,20 +5,33 @@ import {WarningOutlined} from "@ant-design/icons-vue";
 
 class Services {
     public link: string = "http://localhost:8762/api/"
-    _exData = (data: any) => {
-        if (data && data.data.code == 0) {
+    _exData = async (data: any) => {
+        try {
+            const resonse = await data
+            if (resonse.data.code == 0) {
+                notification.open({
+                    message: data.data.message,
+                    description:
+                        'Has an error. Try again',
+                    icon: h(WarningOutlined, {style: 'color: red'}),
+                    duration: 3,
+                });
+                throw resonse.data.message
+            } else if (resonse.data.code == -1) {
+                message.error(data.data.message)
+                window.location.href = '/login'
+            } else return data
+            return resonse
+        } catch (e) {
             notification.open({
-                message: data.data.message,
+                message: 'Has an error',
                 description:
                     'Has an error. Try again',
                 icon: h(WarningOutlined, {style: 'color: red'}),
                 duration: 3,
             });
-            throw data.data.message
-        } else if (data && data.data.code == -1) {
-            message.error(data.data.message)
-            window.location.href = '/login'
-        } else return data
+            throw e
+        }
     }
 
     _initHeader<AxiosRequestHeaders>() {
@@ -30,13 +43,14 @@ class Services {
 
     _getAllEmployee = async (obj: object) => {
         try {
-            let res = await axios.get(this.link + 'users/employees',
+            const res = await this._exData(await axios.get(this.link + 'users/employees',
                 {
                     params: {...obj},
                     headers: this._initHeader()
                 }
-            )
-            return this._exData(res).data.response
+            ))
+
+            return res.data.response
         } catch (error) {
             throw error
         }
@@ -44,32 +58,32 @@ class Services {
 
     _getDetailEmployee = async (id: bigint) => {
         try {
-            let res = await axios.get(this.link + `users/employees/${id}`)
-            return this._exData(res).data.response
+
+            let res = await this._exData(axios.get(this.link + `users/employees/${id}`))
+            return res.data.response
         } catch (error) {
             throw error
         }
     }
     _getAllJobs = async () => {
         try {
-            let res = await axios.get(this.link + 'users/job',
-            )
-            return this._exData(res).data.response
+            let res = await this._exData(await axios.get(this.link + 'users/job'))
+            return res.data.response
         } catch (error) {
             throw error
         }
     }
     _getAllDepartments = async () => {
         try {
-            let res = await axios.get(this.link + 'users/departments',)
-            return this._exData(res).data.response
+            let res = await this._exData(axios.get(this.link + 'users/departments'))
+            return res.data.response
         } catch (error) {
             throw error
         }
     }
     _editEmployees = async (obj: object) => {
         try {
-            let res = await axios.post(this.link + 'users/employees',
+            let res = await axios.post(this.link + 'users/employees/edit',
                 obj
             )
             return this._exData(res)
@@ -87,20 +101,21 @@ class Services {
             throw e
         }
     }
+
     _delMultiusers = async (arr: number[]) => {
         try {
-            let res = await axios.post(this.link + 'users/employees/delete_employee',
+            const res = await this._exData(axios.post(this.link + 'users/employees/delete_employee',
                 arr,
                 {
                     headers: this._initHeader()
                 }
-            )
-            return this._exData(res)
+            ))
+
+            return res.data.response
         } catch (e) {
             throw e
         }
     }
-
 }
 
 const

@@ -1,16 +1,12 @@
 <template>
-  <div style="max-width: 180px;margin-left: auto" class="d-flex">
-    <a-button class="d-block" style="margin-left: auto" type="primary" @click="isEdit">Edit</a-button>
-    <a-button class="d-block" style="margin-left: auto" type="primary" @click="isAdd">Add</a-button>
-  </div>
+  <a-button class="d-block" style="margin-left: auto" type="primary" @click="isEdit">Edit</a-button>
   <a-drawer
+      title="Edit employees"
       :width="800"
       :placement="placement"
       :visible="visible"
       @close="onClose"
   >
-    <h3 class="mb-5" v-if="state.isEdit">Edit employees</h3>
-    <h3 class="mb-5" v-else>Create employees</h3>
     <template #extra>
       <a-button style="margin-right: 8px" @click="onClose">Cancel</a-button>
       <a-button type="primary" @click="onClose">Submit</a-button>
@@ -66,9 +62,10 @@
 import {defineComponent, ref, reactive, toRaw, onMounted, h} from 'vue';
 import type {UnwrapRef} from 'vue';
 import {Dayjs} from 'dayjs';
-import Services from "../../services";
+import Services from "../../../services";
 import {notification} from "ant-design-vue";
 import {SmileOutlined} from "@ant-design/icons-vue";
+import router from "../../../routes";
 
 interface FormState {
   employeeId: number,
@@ -92,13 +89,10 @@ interface state {
 }
 
 export default defineComponent({
-  props: ['id'],
+  props: ['id', 'reloadData'],
   setup(props) {
     const lstJob = ref<object>()
     const lstDepartments = ref<object>()
-    const state = reactive<state>({
-      isEdit: false
-    })
     const _getListJob = async () => {
       try {
         const res = await Services._getAllJobs()
@@ -130,6 +124,7 @@ export default defineComponent({
     onMounted(() => {
       _getLisTDepartments()
       _getListJob()
+      _getDetailEmployee([props.id])
     })
     const _getDetailEmployee = async (ids: any) => {
       try {
@@ -244,6 +239,7 @@ export default defineComponent({
               icon: h(SmileOutlined, {style: 'color: #108ee9'}),
               duration: 2,
             });
+            props.reloadData()
             visible.value = false
           })
           .catch((error: object) => {
@@ -255,21 +251,6 @@ export default defineComponent({
 
     const isEdit = () => {
       visible.value = true;
-      state.isEdit = true
-      _getDetailEmployee([props.id])
-    };
-
-    const isAdd = () => {
-      visible.value = true;
-      state.isEdit = false
-      formState.firstName = ''
-      formState.lastName = ''
-      formState.hireDate = 0
-      formState.salary = ''
-      formState.departmentId = 0
-      formState.jobId = 0
-      formState.phoneNumber = ''
-      formState.email = ''
     };
     const onClose = () => {
       visible.value = false;
@@ -279,7 +260,6 @@ export default defineComponent({
       visible,
       isEdit,
       onClose,
-      isAdd,
       labelCol: {span: 4},
       wrapperCol: {span: 14},
       formState,
@@ -288,7 +268,6 @@ export default defineComponent({
       formRef,
       lstJob,
       lstDepartments,
-      state
     };
   },
 });

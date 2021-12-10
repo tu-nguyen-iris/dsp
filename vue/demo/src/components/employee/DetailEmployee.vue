@@ -1,5 +1,5 @@
 <template>
-  <EditEmployee v-if="!isLoading" :id="id"/>
+  <EditEmployee :reloadData="reloadData" v-if="!isLoading" :id="id"/>
   <h1 class='mb-5 text-center'>
     Detail Employee
   </h1>
@@ -22,7 +22,7 @@
     </a-col>
     <a-col :span="12">
       <h5 class="font-weight-bold">Hire Date</h5>
-      <p>{{ new Date(data.hireDate).getDate() || '-' }}</p>
+      <p>{{ data.hireDate || '-' }}</p>
     </a-col>
     <a-col :span="12">
       <h5 class="font-weight-bold">Job Name</h5>
@@ -43,10 +43,12 @@
 import {defineComponent, onMounted, ref} from 'vue'
 import {useRoute} from 'vue-router';
 import Services from "../../services";
-import EditEmployee from "./EditEmployee.vue";
+import EditEmployee from "./Form/EditEmployee.vue";
 
 export default defineComponent({
-  components: {EditEmployee},
+  components: {
+    EditEmployee
+  },
   setup() {
     const data = ref<Object>({});
     const isLoading = ref(true)
@@ -58,7 +60,6 @@ export default defineComponent({
     const _getDetailEmployee = async (ids: any) => {
       try {
         const res = await Services._getDetailEmployee(ids);
-        console.log(res)
         data.value = res.detail
         isLoading.value = false
       } catch (e) {
@@ -66,13 +67,19 @@ export default defineComponent({
         console.log(e)
       }
     }
+    const reloadData = () => {
+      isLoading.value = true
+      _getDetailEmployee(id)
+    }
     return {
       data,
       isLoading,
-      id
+      id,
+      reloadData
     }
   },
 })
 </script>
 <style scoped>
+
 </style>

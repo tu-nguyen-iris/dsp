@@ -136,9 +136,9 @@ public class EmployeeSerIml implements EmployeeSevices {
     @Override
     public boolean delMultiEmployees(List<Long> lst_employees) {
         try {
-            System.out.println(lst_employees.isEmpty());
             if (lst_employees.isEmpty()) return false;
             String lst_empoyees_str = lst_employees.stream().map(String::valueOf).collect(Collectors.joining(","));
+            System.out.println(lst_empoyees_str);
             employeeRepo.delMultiEmployees(lst_empoyees_str);
             return true;
         } catch (DataAccessException e) {

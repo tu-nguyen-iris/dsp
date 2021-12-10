@@ -77,6 +77,7 @@ public class EmployeeControler {
     @PostMapping
     public ResponseEntity addEmployee(@RequestBody EmployeeDto employeeDto) {
         try {
+            System.out.println(employeeDto);
             ResponseModified res = employeeSevices.addAnEmployee(employeeDto);
             return new ResponseEntity<>(res, HttpStatus.OK);
         } catch (Exception e) {
