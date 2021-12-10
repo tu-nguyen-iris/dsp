@@ -58,7 +58,8 @@ export default defineComponent({
     const _getDetailEmployee = async (ids: any) => {
       try {
         const res = await Services._getDetailEmployee(ids);
-        data.value = res.data.detail
+        console.log(res)
+        data.value = res.detail
         isLoading.value = false
       } catch (e) {
         isLoading.value = false

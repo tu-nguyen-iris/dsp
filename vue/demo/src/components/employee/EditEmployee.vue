@@ -1,12 +1,16 @@
 <template>
-  <a-button class="d-block" style="margin-left: auto" type="primary" @click="showDrawer">Edit</a-button>
+  <div style="max-width: 180px;margin-left: auto" class="d-flex">
+    <a-button class="d-block" style="margin-left: auto" type="primary" @click="isEdit">Edit</a-button>
+    <a-button class="d-block" style="margin-left: auto" type="primary" @click="isAdd">Add</a-button>
+  </div>
   <a-drawer
       :width="800"
-      title="Edit Employee"
       :placement="placement"
       :visible="visible"
       @close="onClose"
   >
+    <h3 class="mb-5" v-if="state.isEdit">Edit employees</h3>
+    <h3 class="mb-5" v-else>Create employees</h3>
     <template #extra>
       <a-button style="margin-right: 8px" @click="onClose">Cancel</a-button>
       <a-button type="primary" @click="onClose">Submit</a-button>
@@ -59,19 +63,21 @@
   </a-drawer>
 </template>
 <script lang="ts">
-import {defineComponent, ref, reactive, toRaw, onMounted} from 'vue';
+import {defineComponent, ref, reactive, toRaw, onMounted, h} from 'vue';
 import type {UnwrapRef} from 'vue';
 import {Dayjs} from 'dayjs';
 import Services from "../../services";
+import {notification} from "ant-design-vue";
+import {SmileOutlined} from "@ant-design/icons-vue";
 
 interface FormState {
   employeeId: number,
   firstName: string,
   lastName: string,
-  hireDate: bigint,
+  hireDate: number,
   salary: string,
-  departmentId: bigint,
-  jobId: bigint,
+  departmentId: number,
+  jobId: number,
   email: string,
   phoneNumber: string
 }
@@ -81,16 +87,22 @@ interface jobState {
   jobTitle: string
 }
 
+interface state {
+  isEdit: boolean
+}
+
 export default defineComponent({
   props: ['id'],
   setup(props) {
     const lstJob = ref<object>()
     const lstDepartments = ref<object>()
-
+    const state = reactive<state>({
+      isEdit: false
+    })
     const _getListJob = async () => {
       try {
         const res = await Services._getAllJobs()
-        let newData = res.data.data.map((item: jobState) => {
+        let newData = res.data.map((item: jobState) => {
           return {
             key: item.jobId,
             value: item.jobTitle
@@ -104,7 +116,7 @@ export default defineComponent({
     const _getLisTDepartments = async () => {
       try {
         const res = await Services._getAllDepartments()
-        let newData = res.data.data.map(item => {
+        let newData = res.data.map((item: any) => {
           return {
             key: item.id,
             value: item.departmentName
@@ -118,19 +130,18 @@ export default defineComponent({
     onMounted(() => {
       _getLisTDepartments()
       _getListJob()
-      _getDetailEmployee([props.id])
     })
     const _getDetailEmployee = async (ids: any) => {
       try {
         const res = await Services._getDetailEmployee(ids);
-        formState.firstName = res.data.detail.firstName;
-        formState.lastName = res.data.detail.lastName;
-        formState.hireDate = res.data.detail.hireDate;
-        formState.salary = res.data.detail.salary;
-        formState.departmentId = res.data.detail.departmentId;
-        formState.jobId = res.data.detail.jobId;
-        formState.phoneNumber = res.data.detail.phoneNumber;
-        formState.email = res.data.detail.email;
+        formState.firstName = res.detail.firstName;
+        formState.lastName = res.detail.lastName;
+        formState.hireDate = res.detail.hireDate;
+        formState.salary = res.detail.salary;
+        formState.departmentId = res.detail.departmentId;
+        formState.jobId = res.detail.jobId;
+        formState.phoneNumber = res.detail.phoneNumber;
+        formState.email = res.detail.email;
       } catch (e) {
         console.log(e)
       }
@@ -210,14 +221,14 @@ export default defineComponent({
       ],
     };
     const formRef = ref();
-    const formState: UnwrapRef<FormState> = reactive({
+    const formState = reactive<FormState>({
       employeeId: Number(props.id),
       firstName: '',
       lastName: '',
-      hireDate: '',
+      hireDate: 0,
       salary: '',
-      departmentId: '',
-      jobId: '',
+      departmentId: 0,
+      jobId: 0,
       phoneNumber: '',
       email: '',
     });
@@ -226,7 +237,14 @@ export default defineComponent({
           .validate()
           .then(async () => {
             const res = await Services._editEmployees(toRaw(formState))
-            console.log('values', formState);
+            notification.open({
+              message: 'Edit success',
+              description:
+                  'This is the content of demo hehe.',
+              icon: h(SmileOutlined, {style: 'color: #108ee9'}),
+              duration: 2,
+            });
+            visible.value = false
           })
           .catch((error: object) => {
             console.log('error', error);
@@ -235,18 +253,33 @@ export default defineComponent({
     const placement = ref<string>('right');
     const visible = ref<boolean>(false);
 
-    const showDrawer = () => {
+    const isEdit = () => {
       visible.value = true;
+      state.isEdit = true
+      _getDetailEmployee([props.id])
     };
 
+    const isAdd = () => {
+      visible.value = true;
+      state.isEdit = false
+      formState.firstName = ''
+      formState.lastName = ''
+      formState.hireDate = 0
+      formState.salary = ''
+      formState.departmentId = 0
+      formState.jobId = 0
+      formState.phoneNumber = ''
+      formState.email = ''
+    };
     const onClose = () => {
       visible.value = false;
     };
     return {
       placement,
       visible,
-      showDrawer,
+      isEdit,
       onClose,
+      isAdd,
       labelCol: {span: 4},
       wrapperCol: {span: 14},
       formState,
@@ -254,7 +287,8 @@ export default defineComponent({
       rules,
       formRef,
       lstJob,
-      lstDepartments
+      lstDepartments,
+      state
     };
   },
 });
