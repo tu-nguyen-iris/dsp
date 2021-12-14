@@ -2,12 +2,14 @@ import {message, notification} from "ant-design-vue";
 import axios from "axios";
 import {h} from "vue";
 import {WarningOutlined} from "@ant-design/icons-vue";
+import router from "../routes";
 
 class Services {
-    public link: string = "http://localhost:8762/api/"
+    public link: string = "http://localhost:8762/"
     _exData = async (data: any) => {
         try {
             const resonse = await data
+            console.log(resonse)
             if (resonse.data.code == 0) {
                 notification.open({
                     message: data.data.message,
@@ -20,7 +22,9 @@ class Services {
             } else if (resonse.data.code == -1) {
                 message.error(data.data.message)
                 window.location.href = '/login'
-            } else return data
+            } else {
+                router.push('/login')
+            }
             return resonse
         } catch (e) {
             notification.open({
@@ -36,8 +40,9 @@ class Services {
 
     _initHeader<AxiosRequestHeaders>() {
         return {
-            'Content-Type': 'application/json',
-            token: localStorage.getItem('token') || ''
+            "Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json;charset=UTF-8',
+            Authorization: 'Bearer ' + localStorage.getItem('token') || '',
         }
     }
 
@@ -59,7 +64,9 @@ class Services {
     _getDetailEmployee = async (id: bigint) => {
         try {
 
-            let res = await this._exData(axios.get(this.link + `users/employees/${id}`))
+            let res = await this._exData(axios.get(this.link + `users/employees/${id}`, {
+                headers: this._initHeader()
+            }))
             return res.data.response
         } catch (error) {
             throw error
@@ -67,7 +74,9 @@ class Services {
     }
     _getAllJobs = async () => {
         try {
-            let res = await this._exData(await axios.get(this.link + 'users/job'))
+            let res = await this._exData(await axios.get(this.link + 'users/job', {
+                headers: this._initHeader()
+            }))
             return res.data.response
         } catch (error) {
             throw error
@@ -75,7 +84,9 @@ class Services {
     }
     _getAllDepartments = async () => {
         try {
-            let res = await this._exData(axios.get(this.link + 'users/departments'))
+            let res = await this._exData(axios.get(this.link + 'users/departments', {
+                headers: this._initHeader()
+            }))
             return res.data.response
         } catch (error) {
             throw error

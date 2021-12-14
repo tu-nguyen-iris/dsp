@@ -3,39 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="daab7fd9-5380-41c9-be49-57cfb28ac715" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../untitled/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__com_github_stephenc_jcip_jcip_annotations_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__com_nimbusds_content_type_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__com_nimbusds_lang_tag_1_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__com_nimbusds_nimbus_jose_jwt_9_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__com_nimbusds_oauth2_oidc_sdk_9_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/J2EE_1_4_J2EE_1_4.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__io_jsonwebtoken_jjwt_0_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_oauth2_client_2_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_oauth2_resource_server_2_6_1.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_6_1.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_client_5_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_core_5_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_jose_5_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_resource_server_5_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/gateway/src/main/java/io/dev/gateway/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/gateway/src/main/java/io/dev/gateway/jwt/Jwt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/gateway/src/main/java/io/dev/gateway/jwt/JwtTokenAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/components/employee/Form/AddEmployee.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../untitled/auth/src/main/java/io/dev/auth/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../untitled/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../untitled/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../untitled/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../untitled/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/employees/src/main/java/io/dev/employees/controller/EmployeeControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/employees/src/main/java/io/dev/employees/controller/EmployeeControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/employees/src/main/java/io/dev/employees/respository/EmployeeRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/employees/src/main/java/io/dev/employees/respository/EmployeeRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/employees/src/main/java/io/dev/employees/services/Employees/EmployeeSerIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/employees/src/main/java/io/dev/employees/services/Employees/EmployeeSerIml.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../untitled/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/gateway/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/components/employee/DetailEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/components/employee/DetailEmployee.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/components/employee/EditEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/components/employee/Form/EditEmployee.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/components/employee/ListEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/components/employee/ListEmployee.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/services/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

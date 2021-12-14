@@ -2,26 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ca36db1-002c-4dac-83e0-fdbd019e174f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/employee/EditEmployee.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Countries.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Countries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Departments.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Departments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Employees.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Employees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Locations.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Locations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Regions.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/Entity/Regions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/controller/EmployeeControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/controller/EmployeeControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/dto/EmployeeDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/mapper/EmployeeMaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/mapper/EmployeeMaper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/respository/EmployeeRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/respository/EmployeeRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/services/EmployeeSevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/services/EmployeeSevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/services/iml/EmployeeSerIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../spring/src/main/java/com/example/demo/services/iml/EmployeeSerIml.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/employee/DetailEmployee.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/DetailEmployee.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/.idea/dataSources/08a3a757-5dd2-4066-83ef-5d0c68eeb0f1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/.idea/dataSources/d2864ddc-a494-4a5d-a2de-643679615ce0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/.idea/dataSources/d2864ddc-a494-4a5d-a2de-643679615ce0/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/.idea/libraries/J2EE_1_4_J2EE_1_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/.idea/libraries/Maven__io_jsonwebtoken_jjwt_0_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_6_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/src/main/java/io/dev/auth/AuthApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/src/main/java/io/dev/auth/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/auth/src/test/java/io/dev/auth/AuthApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/clientservice/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/clientservice/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/clientservice/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/clientservice/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/Roles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/respository/RoleRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/respository/UserRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/Service/User/CustomUserDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/Service/User/UserServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/auth/AuthResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/auth/JwtToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/entity/Roles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/exception/CustomException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/payload/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/payload/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/reponsitory/UserRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtTokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/lib/j2ee.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/logs/mylog.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/logs/mylog.log.2021-12-10.0.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/logs/mylog.log.2021-12-13.0.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/controller/EmployeeControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/controller/EmployeeControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +86,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="ts.external.directory.path" value="D:\cruid\vue\demo\node_modules\typescript\lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../client/admin" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="D:\spring\dsp\vue\demo\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -57,6 +100,8 @@
       <option name="presentableId" value="Default" />
       <updated>1636996186949</updated>
       <workItem from="1636996189755" duration="4438000" />
+      <workItem from="1639375572498" duration="159000" />
+      <workItem from="1639458559935" duration="13720000" />
     </task>
     <servers />
   </component>

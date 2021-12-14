@@ -99,7 +99,7 @@ public class EmployeeControler {
     public ResponseEntity delMultiUser(@RequestBody List<Long> lst_employees) {
         try {
             boolean result = employeeSevices.delMultiEmployees(lst_employees);
-            if (result) {
+            if (!result) {
                 return new ResponseEntity(new ResponseModified(1, "SUCCESS", null), HttpStatus.OK);
             }
             return new ResponseEntity(new ResponseModified(0, "ERROR", null), HttpStatus.INTERNAL_SERVER_ERROR);
