@@ -7,10 +7,10 @@ import router from "../routes";
 class Services {
     public link: string = "http://localhost:8762/"
     _exData = async (data: any) => {
+        const reseponse = await data
+        console.log(reseponse)
         try {
-            const resonse = await data
-            console.log(resonse)
-            if (resonse.data.code == 0) {
+            if (reseponse.data.code == 0) {
                 notification.open({
                     message: data.data.message,
                     description:
@@ -18,14 +18,14 @@ class Services {
                     icon: h(WarningOutlined, {style: 'color: red'}),
                     duration: 3,
                 });
-                throw resonse.data.message
-            } else if (resonse.data.code == -1) {
+                throw reseponse.data.message
+            } else if (reseponse.data.code == -1) {
                 message.error(data.data.message)
                 window.location.href = '/login'
             } else {
                 router.push('/login')
             }
-            return resonse
+            return reseponse
         } catch (e) {
             notification.open({
                 message: 'Has an error',
@@ -42,7 +42,7 @@ class Services {
         return {
             "Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json;charset=UTF-8',
-            Authorization: 'Bearer ' + localStorage.getItem('token') || '',
+            Authorization: ('Bearer ' + localStorage.getItem('token')) || '',
         }
     }
 
@@ -122,6 +122,27 @@ class Services {
                 }
             ))
 
+            return res.data.response
+        } catch (e) {
+            throw e
+        }
+    }
+    _register = async (obj: { username: string, password: string }) => {
+        try {
+            const res = await this._exData(axios.post(this.link + 'register',
+                obj
+            ))
+
+            return res.data.response
+        } catch (e) {
+            throw e
+        }
+    }
+    _login = async (obj: { username: string, password: string }) => {
+        try {
+            const res = await this._exData(axios.post(this.link + 'login',
+                obj
+            ))
             return res.data.response
         } catch (e) {
             throw e

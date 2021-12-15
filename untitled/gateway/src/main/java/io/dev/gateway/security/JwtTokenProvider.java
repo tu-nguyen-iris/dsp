@@ -1,19 +1,11 @@
 package io.dev.gateway.security;
 
 import io.dev.gateway.Service.User.CustomUserDetail;
-import io.dev.gateway.auth.JwtToken;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-import java.util.Base64;
 import java.util.Date;
-import java.util.logging.ErrorManager;
 
 /**
  * Created by TuNguyen
@@ -30,7 +22,7 @@ public class JwtTokenProvider  {
         Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION);
         // Tạo chuỗi json web token từ id của user.
         return Jwts.builder()
-                .setSubject(userDetails.getUser().getUserName())
+                .setSubject(userDetails.getUser().getUsername())
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, JWT_SECRET)
