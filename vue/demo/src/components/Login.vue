@@ -1,59 +1,76 @@
 <template>
   <div class="vue-tempalte">
-    <form>
+    <a-form ref="formRef" :model="formState">
       <h3>Sign In</h3>
+      <a-form-item name='username' class="form-group">
+        <label>User name</label>
+        <a-input v-model:value="formState.username" class="form-control form-control-lg"/>
+      </a-form-item>
 
-      <div class="form-group">
-        <label>Email address</label>
-        <input type="email" class="form-control form-control-lg"/>
-      </div>
-
-      <div class="form-group">
+      <a-form-item name="password" class="mt-3 form-group">
         <label>Password</label>
-        <input type="password" class="form-control form-control-lg"/>
-      </div>
+        <a-input type="password" v-model:value="formState.password" class="form-control form-control-lg"/>
+      </a-form-item>
 
-      <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
+      <div class="d-flex justify-content-between mt-3">
+        <button class="btn mt-3 btn-dark btn-lg btn-block" @click="signIn">Sign In</button>
+        <button class="btn mt-3 btn-dark btn-lg btn-block" @click="register">Register</button>
+      </div>
 
       <p class="forgot-password text-right mt-2 mb-4">
         <router-link to="/forgot-password">Forgot password ?</router-link>
       </p>
-
-      <div class="social-icons">
-        <ul>
-          <li><a href="#"><i class="fa fa-google"></i></a></li>
-          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-        </ul>
-      </div>
-
-    </form>
+    </a-form>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {reactive, ref, toRaw} from "vue";
+import Services from '../services/index';
+
+interface formState {
+  username: string,
+  password: string
+}
+
 export default {
-  name: "Login"
+  name: "Login",
+  setup() {
+    const formRef = ref();
+    const formState = reactive<formState>({
+      username: "",
+      password: ""
+    })
+    const signIn = async () => {
+      const res = await Services._login(toRaw(formState))
+      console.log(res)
+    }
+    const register = async () => {
+      const res = await Services._register(toRaw(formState))
+      console.log(res)
+    }
+    return {
+      formState,
+      signIn,
+      register
+    }
+  }
 }
 </script>
 
 <style scoped>
 
-/*body {*/
-/*  background: #2554FF !important;*/
-/*  min-height: 100vh;*/
-/*  display: flex;*/
-/*  font-weight: 400;*/
-/*}*/
+.vue-tempalte {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/*body,*/
-/*html,*/
-/*.App,*/
-/*.vue-tempalte,*/
-/*.vertical-center {*/
-/*  width: 100%;*/
-/*  height: 100%;*/
-/*}*/
+form {
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
 
 .navbar-light {
   background-color: #ffffff;
