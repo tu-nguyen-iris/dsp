@@ -3,6 +3,8 @@ package io.dev.gateway.security;
 import io.dev.gateway.Service.User.CustomUserDetail;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -13,13 +15,18 @@ import java.util.Date;
  */
 @Component
 @Slf4j
-public class JwtTokenProvider  {
-    private final String JWT_SECRET = "test";
+public class JwtTokenProvider {
+
+    @Value("${io.dev.secret}")
+    private String JWT_SECRET;
+
     private final long JWT_EXPIRATION = 604800000L;
+
     public String generateToken(CustomUserDetail userDetails) {
         // Lấy thông tin user
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION);
+        System.out.println(JWT_SECRET + "Ádasd");
         // Tạo chuỗi json web token từ id của user.
         return Jwts.builder()
                 .setSubject(userDetails.getUser().getUsername())
@@ -37,9 +44,12 @@ public class JwtTokenProvider  {
 
         return Long.parseLong(claims.getSubject());
     }
+
     public String getUsername(String token) {
+        System.out.println(JWT_SECRET + "Ádas");
         return Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(token).getBody().getSubject();
     }
+
     public boolean validateToken(String authToken) {
         try {
             Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(authToken);

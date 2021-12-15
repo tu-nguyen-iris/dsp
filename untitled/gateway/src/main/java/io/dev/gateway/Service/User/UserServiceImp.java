@@ -3,6 +3,7 @@ package io.dev.gateway.Service.User;
 import io.dev.gateway.entity.User;
 import io.dev.gateway.reponsitory.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,11 +17,10 @@ import javax.transaction.Transactional;
  */
 @Service
 public class UserServiceImp implements UserDetailsService {
-
+    @Value("${io.dev.secret}")
+    private String JWT_SECRET ;
     @Autowired
     private UserRepo userRepo;
-
-
 
     @Override
     public UserDetails loadUserByUsername(String username) {
@@ -32,20 +32,13 @@ public class UserServiceImp implements UserDetailsService {
         return new CustomUserDetail(user);
     }
 
-    public void createUser(User user) {
+    public boolean createUser(User user) {
         User checkUser = userRepo.findByUsername(user.getUsername());
-        System.out.println(checkUser);
         if (checkUser == null) {
             userRepo.save(user);
-        } else throw new IllegalArgumentException();
+            return true;
+        }
+        return false;
     }
 
-    @Transactional
-    public UserDetails loadUserById(Long id) {
-        User user = userRepo.findById(id).orElseThrow(
-                () -> new UsernameNotFoundException("User not found with id : " + id)
-        );
-
-        return new CustomUserDetail(user);
-    }
 }

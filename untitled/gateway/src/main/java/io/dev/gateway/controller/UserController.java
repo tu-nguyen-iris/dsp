@@ -3,10 +3,13 @@ package io.dev.gateway.controller;
 import io.dev.gateway.Service.User.CustomUserDetail;
 import io.dev.gateway.Service.User.UserServiceImp;
 import io.dev.gateway.entity.User;
+import io.dev.gateway.exception.ErrorDetails;
 import io.dev.gateway.payload.LoginRequest;
 import io.dev.gateway.payload.LoginResponse;
 import io.dev.gateway.security.JwtTokenProvider;
+import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +30,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/")
 public class UserController {
+
+    @Value("${io.dev.secret}")
+    private String JWT_SECRET;
 
     @Autowired
     private UserServiceImp userServiceImp;
@@ -39,56 +46,41 @@ public class UserController {
     @Autowired
     private PasswordEncoder bcryptEncoder;
 
-    @GetMapping("/test")
-    public String tst() {
-        return "ASDasdsadsadsa";
-    }
-
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticateUser(@RequestBody LoginRequest loginRequest) {
         try {
-            // Xác thực thông tin người dùng Request lên
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             loginRequest.getUsername(),
                             loginRequest.getPassword()
                     )
             );
-
-            // Nếu không xảy ra exception tức là thông tin hợp lệ
-            // Set thông tin authentication vào Security Context
             SecurityContextHolder.getContext().setAuthentication(authentication);
-
-            // Trả về jwt cho người dùng.
             String jwt = tokenProvider.generateToken((CustomUserDetail) authentication.getPrincipal());
-            return new ResponseEntity<>(new LoginResponse(jwt), HttpStatus.OK);
+            Date expDate = Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(jwt).getBody().getExpiration();
+            return new ResponseEntity<>(new LoginResponse(jwt, expDate, "Login Success", 1), HttpStatus.OK);
         } catch (Exception e) {
-            Map<String, String> msg = new HashMap<>();
-            msg.put("code", "-1");
-            msg.put("message", "Account not found");
-            return new ResponseEntity(msg, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(new ErrorDetails(new Date(), e.getMessage(), null, 0, null), HttpStatus.OK);
         }
     }
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody User user) {
         try {
-
+            if (user.getUsername().isEmpty() || user.getPassword().isEmpty())
+                return new ResponseEntity(new ErrorDetails(new Date(), "Required Username and password", null, 0, null), HttpStatus.OK);
             User newUsr = new User();
             newUsr.setUsername(user.getUsername());
             newUsr.setPassword(bcryptEncoder.encode(user.getPassword()));
             newUsr.setEmail("Test@Dasd.co");
             newUsr.setName("demo");
-            userServiceImp.createUser(newUsr);
-            Map<String, String> msg = new HashMap<>();
-            msg.put("code", "1");
-            msg.put("message", "Success");
-            return new ResponseEntity<>(msg, HttpStatus.OK);
+            boolean createUsr = userServiceImp.createUser(newUsr);
+            if (createUsr) {
+                return new ResponseEntity(new ErrorDetails(new Date(), "success", null, 1, null), HttpStatus.OK);
+            } else
+                return new ResponseEntity(new ErrorDetails(new Date(), "Account already exist", null, 0, null), HttpStatus.OK);
         } catch (Exception e) {
-            Map<String, String> msg = new HashMap<>();
-            msg.put("code", "-1");
-            msg.put("message", "Account already exist");
-            return new ResponseEntity(msg, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(new ErrorDetails(new Date(), e.getMessage(), null, 0, null), HttpStatus.OK);
         }
     }
 }

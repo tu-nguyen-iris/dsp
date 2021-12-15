@@ -1,4 +1,4 @@
-package io.dev.employees.exception;
+package io.dev.gateway.exception;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +14,6 @@ public class ErrorDetails {
     private String message;
     private String details;
     Map<String, Object> response = new HashMap<>();
-
     private Integer code;
 
     public ErrorDetails(Date timestamp, String message, String details, Integer code, Map<String, Object> response) {

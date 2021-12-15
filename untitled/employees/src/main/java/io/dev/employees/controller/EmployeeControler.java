@@ -66,7 +66,7 @@ public class EmployeeControler {
             if (result) {
                 return new ResponseEntity<>(new ResponseModified(1, "DELETE SUCCESS", null), HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(new ResponseModified(0, "ERROR", null), HttpStatus.OK);
+                return new ResponseEntity<>(new ResponseModified(0, "Có lỗi xảy ra", null), HttpStatus.OK);
             }
 
         } catch (Exception e) {
@@ -91,7 +91,7 @@ public class EmployeeControler {
             ResponseModified result = employeeSevices.editEmployee(employeeDto);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(new ResponseModified(0, "ERROR", null), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ResponseModified(0, "Có lỗi xảy ra", null), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -99,10 +99,10 @@ public class EmployeeControler {
     public ResponseEntity delMultiUser(@RequestBody List<Long> lst_employees) {
         try {
             boolean result = employeeSevices.delMultiEmployees(lst_employees);
-            if (!result) {
+            if (result) {
                 return new ResponseEntity(new ResponseModified(1, "SUCCESS", null), HttpStatus.OK);
             }
-            return new ResponseEntity(new ResponseModified(0, "ERROR", null), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity(new ResponseModified(0, "Có lỗi xảy ra", null), HttpStatus.OK);
         } catch (Exception e) {
             System.out.println(e);
             return new ResponseEntity(new ResponseModified(0, "ERROR", null), HttpStatus.INTERNAL_SERVER_ERROR);

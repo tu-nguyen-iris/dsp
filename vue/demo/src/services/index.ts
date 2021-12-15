@@ -7,33 +7,27 @@ import router from "../routes";
 class Services {
     public link: string = "http://localhost:8762/"
     _exData = async (data: any) => {
-        const reseponse = await data
-        console.log(reseponse)
         try {
+            const reseponse = await data
             if (reseponse.data.code == 0) {
                 notification.open({
-                    message: data.data.message,
-                    description:
-                        'Has an error. Try again',
+                    message: reseponse.data.message,
                     icon: h(WarningOutlined, {style: 'color: red'}),
+                    description: reseponse.data.message,
                     duration: 3,
                 });
                 throw reseponse.data.message
             } else if (reseponse.data.code == -1) {
-                message.error(data.data.message)
-                window.location.href = '/login'
-            } else {
+                notification.open({
+                    message: reseponse.data.message,
+                    description: reseponse.data.message,
+                    icon: h(WarningOutlined, {style: 'color: red'}),
+                    duration: 3,
+                });
                 router.push('/login')
             }
             return reseponse
         } catch (e) {
-            notification.open({
-                message: 'Has an error',
-                description:
-                    'Has an error. Try again',
-                icon: h(WarningOutlined, {style: 'color: red'}),
-                duration: 3,
-            });
             throw e
         }
     }
@@ -95,7 +89,10 @@ class Services {
     _editEmployees = async (obj: object) => {
         try {
             let res = await axios.post(this.link + 'users/employees/edit',
-                obj
+                obj,
+                {
+                    headers: this._initHeader()
+                }
             )
             return this._exData(res)
         } catch (e) {
@@ -105,7 +102,8 @@ class Services {
     _addEmployeees = async (obj: object) => {
         try {
             let res = await axios.post(this.link + 'users/employees',
-                obj
+                obj,
+                {   headers: this._initHeader()}
             )
             return this._exData(res)
         } catch (e) {
@@ -143,7 +141,7 @@ class Services {
             const res = await this._exData(axios.post(this.link + 'login',
                 obj
             ))
-            return res.data.response
+            return res.data
         } catch (e) {
             throw e
         }

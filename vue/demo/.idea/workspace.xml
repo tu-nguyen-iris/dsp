@@ -2,24 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ca36db1-002c-4dac-83e0-fdbd019e174f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/libraries/Maven__org_springframework_security_spring_security_test_5_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/main/java/io/dev/auth/jwt/Jwt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/main/java/io/dev/auth/jwt/JwtTokenAuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/src/main/java/io/dev/clientservice/ClientserviceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/src/test/java/io/dev/clientservice/ClientserviceApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/employees/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/eureka/eureka.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/eureka/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/GatewayApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/exception/ErrorDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/style/login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/main/java/io/dev/auth/AuthApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/main/java/io/dev/auth/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/test/java/io/dev/auth/AuthApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/controller/EmployeeControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/controller/EmployeeControler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/exception/ErrorDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/exception/ErrorDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/exception/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/exception/ResourceNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/Service/User/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/Service/User/UserServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/auth/JwtToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/exception/CustomException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/payload/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/payload/LoginResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtTokenProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/lib/j2ee.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/logs/mylog.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/logs/mylog.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/logs/mylog.log.2021-12-10.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/logs/mylog.log.2021-12-13.0.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/Layout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +50,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -43,8 +72,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="ts.external.directory.path" value="D:\cruid\vue\demo\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\spring\dsp\vue\demo\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

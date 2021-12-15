@@ -12,21 +12,21 @@
         <a-input type="password" v-model:value="formState.password" class="form-control form-control-lg"/>
       </a-form-item>
 
-      <div class="d-flex justify-content-between mt-3">
-        <button class="btn mt-3 btn-dark btn-lg btn-block" @click="signIn">Sign In</button>
-        <button class="btn mt-3 btn-dark btn-lg btn-block" @click="register">Register</button>
+      <div class="d-flex align-items-center justify-content-between mt-5">
+        <button class="btn btn-dark btn-lg btn-block" @click="signIn">Sign In</button>
+        <span>Or</span>
+        <button class="btn btn-dark btn-lg btn-block" @click="register">Register</button>
       </div>
-
-      <p class="forgot-password text-right mt-2 mb-4">
-        <router-link to="/forgot-password">Forgot password ?</router-link>
-      </p>
     </a-form>
   </div>
 </template>
 
 <script lang="ts">
-import {reactive, ref, toRaw} from "vue";
+import {notification} from "ant-design-vue";
+import {h, reactive, ref, toRaw} from "vue";
 import Services from '../services/index';
+import {CheckOutlined} from "@ant-design/icons-vue";
+import router from "../routes";
 
 interface formState {
   username: string,
@@ -42,12 +42,36 @@ export default {
       password: ""
     })
     const signIn = async () => {
-      const res = await Services._login(toRaw(formState))
-      console.log(res)
+      try {
+        const res = await Services._login(toRaw(formState))
+        notification.open({
+          message: 'Login success',
+          description:
+              'Login success',
+          icon: h(CheckOutlined, {style: 'color: blue'}),
+          duration: 3,
+        });
+        localStorage.setItem("token", res.accessToken)
+        router.push('/')
+      } catch (e) {
+        console.log(e)
+      }
+
     }
     const register = async () => {
-      const res = await Services._register(toRaw(formState))
-      console.log(res)
+      try {
+        const res = await Services._register(toRaw(formState))
+        notification.open({
+          message: 'Register success',
+          description:
+              'Has an error. Try again',
+          icon: h(CheckOutlined, {style: 'color: blue'}),
+          duration: 3,
+        });
+      } catch (e) {
+        console.log(e)
+      }
+
     }
     return {
       formState,
@@ -59,7 +83,6 @@ export default {
 </script>
 
 <style scoped>
-
 .vue-tempalte {
   height: 100vh;
   display: flex;
