@@ -57,8 +57,8 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
-        auth.userDetailsService(userService) // Cung cáp userservice cho spring security
-                .passwordEncoder(passwordEncoder()); // cung cấp password encoder
+        auth.userDetailsService(userService) //userservice to spring security
+                .passwordEncoder(passwordEncoder()); // password encoder
     }
 
     @Override
@@ -71,12 +71,12 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .formLogin().disable()
                 .authorizeRequests()
-                .antMatchers("/login").permitAll()
+                .antMatchers("/login").permitAll() // allow this request without token
                 .antMatchers("/register").permitAll()
-                .antMatchers("/users/**").authenticated();
+                .antMatchers("/users/**").authenticated(); // required token header
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         http
-                .exceptionHandling()
+                .exceptionHandling() //modified exception error
                 .authenticationEntryPoint((request, response, e) ->
                 {
                     response.setContentType("application/json");

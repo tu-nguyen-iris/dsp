@@ -4,10 +4,12 @@ import io.dev.gateway.Service.User.CustomUserDetail;
 import io.dev.gateway.Service.User.UserServiceImp;
 import io.dev.gateway.entity.User;
 import io.dev.gateway.exception.ErrorDetails;
+import io.dev.gateway.exception.SystemMessage;
 import io.dev.gateway.payload.LoginRequest;
 import io.dev.gateway.payload.LoginResponse;
 import io.dev.gateway.security.JwtTokenProvider;
 import io.jsonwebtoken.Jwts;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -29,6 +31,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/")
+@Slf4j
 public class UserController {
 
     @Value("${io.dev.secret}")
@@ -57,10 +60,11 @@ public class UserController {
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
             String jwt = tokenProvider.generateToken((CustomUserDetail) authentication.getPrincipal());
+            System.out.println(jwt);
             Date expDate = Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(jwt).getBody().getExpiration();
-            return new ResponseEntity<>(new LoginResponse(jwt, expDate, "Login Success", 1), HttpStatus.OK);
+            return new ResponseEntity<>(new LoginResponse(jwt, expDate, SystemMessage.LOGIN_SUCCESS, 1), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity(new ErrorDetails(new Date(), e.getMessage(), null, 0, null), HttpStatus.OK);
+            return new ResponseEntity(new ErrorDetails(new Date(), SystemMessage.USER_NOT_FOUND, null, 0, null), HttpStatus.OK);
         }
     }
 
@@ -76,11 +80,11 @@ public class UserController {
             newUsr.setName("demo");
             boolean createUsr = userServiceImp.createUser(newUsr);
             if (createUsr) {
-                return new ResponseEntity(new ErrorDetails(new Date(), "success", null, 1, null), HttpStatus.OK);
+                return new ResponseEntity(new ErrorDetails(new Date(), SystemMessage.HANDLE_SUCCESS, null, 1, null), HttpStatus.OK);
             } else
-                return new ResponseEntity(new ErrorDetails(new Date(), "Account already exist", null, 0, null), HttpStatus.OK);
+                return new ResponseEntity(new ErrorDetails(new Date(), SystemMessage.ALREADY_EXIST_ACCOUNT, null, 0, null), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity(new ErrorDetails(new Date(), e.getMessage(), null, 0, null), HttpStatus.OK);
+            return new ResponseEntity(new ErrorDetails(new Date(), SystemMessage.HAS_AN_ERROR, null, 0, null), HttpStatus.OK);
         }
     }
 }

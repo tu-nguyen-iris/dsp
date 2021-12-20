@@ -13,15 +13,11 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * Copyright 2019 {@author Loda} (https://loda.me).
- * This project is licensed under the MIT license.
- *
- * @since 5/1/2019
- * Github: https://github.com/loda-kun
+ * Created by TuNguyen
+ * In 12/14/2021
  */
 @Data
 public class LoginResponse {
-
 
     private String accessToken;
     private String tokenType = "Bearer";
@@ -29,6 +25,13 @@ public class LoginResponse {
     private Integer code;
     private String message;
 
+    /**
+     *
+     * @param accessToken
+     * @param expDate
+     * @param message
+     * @param code
+     */
     public LoginResponse(String accessToken, Date expDate, String message, Integer code) {
         this.accessToken = accessToken;
         this.expiration = expDate;

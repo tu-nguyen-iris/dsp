@@ -22,7 +22,7 @@ public class Departments {
     @Setter
     private List<Employees> employeesList = new ArrayList<>();
 
-    @Column
+    @Column(nullable = false)
     @Getter
     @Setter
     private String departmentName;

@@ -2,6 +2,7 @@ package io.dev.employees.services.Employees;
 
 import io.dev.employees.Entity.Employees;
 import io.dev.employees.config.ResponseModified;
+import io.dev.employees.config.SystemMessage;
 import io.dev.employees.dto.employee.EmployeeDto;
 import io.dev.employees.dto.employee.EmployeeDtoDetail;
 import io.dev.employees.mapper.EmployeeMaper;
@@ -107,9 +108,9 @@ public class EmployeeSerIml implements EmployeeSevices {
             employees.setJobId(jobsRepo.getById(employeeDto.getJobId()));
             employees.setDepartmentId(department.getById(employeeDto.getDepartmentId()));
             employeeRepo.save(employees);
-            return new ResponseModified(1, "SUCCESS", null);
+            return new ResponseModified(1, SystemMessage.HANDLE_SUCCESS, null);
         } catch (DataAccessException e) {
-            return new ResponseModified(0, "ERROR", null);
+            return new ResponseModified(0, SystemMessage.HAS_AN_ERROR, null);
         }
     }
 
@@ -126,10 +127,10 @@ public class EmployeeSerIml implements EmployeeSevices {
             employees.setEmail(employeeDto.getEmail());
             employees.setHireDate(employeeDto.getHireDate());
             employeeRepo.save(employees);
-            return new ResponseModified(1, "SUCCESS", null);
+            return new ResponseModified(1, SystemMessage.HANDLE_SUCCESS, null);
         } catch (DataAccessException e) {
             System.out.println(e);
-            return new ResponseModified(0, "ERROR", null);
+            return new ResponseModified(0, SystemMessage.HAS_AN_ERROR, null);
         }
     }
 
@@ -137,9 +138,9 @@ public class EmployeeSerIml implements EmployeeSevices {
     public boolean delMultiEmployees(List<Long> lst_employees) {
         try {
             if (lst_employees.isEmpty()) return false;
-            String lst_empoyees_str = lst_employees.stream().map(String::valueOf).collect(Collectors.joining(","));
-            System.out.println(lst_empoyees_str);
-            employeeRepo.delMultiEmployees(lst_empoyees_str);
+            String lst_employees_str = lst_employees.stream().map(String::valueOf).collect(Collectors.joining(","));
+            System.out.println(lst_employees_str);
+            employeeRepo.delMultiEmployees(lst_employees_str);
             return true;
         } catch (DataAccessException e) {
             System.out.println(e);

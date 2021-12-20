@@ -14,7 +14,7 @@ import java.util.Date;
  * In 12/14/2021
  */
 @Component
-@Slf4j
+@Slf4j // log
 public class JwtTokenProvider {
 
     @Value("${io.dev.secret}")
@@ -23,11 +23,10 @@ public class JwtTokenProvider {
     private final long JWT_EXPIRATION = 604800000L;
 
     public String generateToken(CustomUserDetail userDetails) {
-        // Lấy thông tin user
+        // get info User
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION);
-        System.out.println(JWT_SECRET + "Ádasd");
-        // Tạo chuỗi json web token từ id của user.
+        // Generate token from information user detail
         return Jwts.builder()
                 .setSubject(userDetails.getUser().getUsername())
                 .setIssuedAt(now)
@@ -36,17 +35,9 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public Long getUserIdFromJWT(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(JWT_SECRET)
-                .parseClaimsJws(token)
-                .getBody();
-
-        return Long.parseLong(claims.getSubject());
-    }
 
     public String getUsername(String token) {
-        System.out.println(JWT_SECRET + "Ádas");
+        System.out.println(JWT_SECRET + "jws check");
         return Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(token).getBody().getSubject();
     }
 

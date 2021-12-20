@@ -2,40 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ca36db1-002c-4dac-83e0-fdbd019e174f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/exception/ErrorDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/style/login.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/main/java/io/dev/auth/AuthApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/main/java/io/dev/auth/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/auth/src/test/java/io/dev/auth/AuthApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/clientservice/pom.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/config/SystemMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/exception/SystemMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/reponsitory/RoleRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/dataSources/08a3a757-5dd2-4066-83ef-5d0c68eeb0f1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/dataSources/08a3a757-5dd2-4066-83ef-5d0c68eeb0f1/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/dataSources/d2864ddc-a494-4a5d-a2de-643679615ce0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/dataSources/d2864ddc-a494-4a5d-a2de-643679615ce0/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/Countries.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/Countries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/Departments.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/Departments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/Employees.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/Employees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/Jobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/Entity/Jobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/config/ResponseModified.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/config/ResponseModified.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/controller/DepartmentControllers.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/controller/DepartmentControllers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/controller/EmployeeControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/controller/EmployeeControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/exception/ErrorDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/exception/ErrorDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/exception/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/exception/ResourceNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/services/Employees/EmployeeSerIml.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/employees/src/main/java/io/dev/employees/services/Employees/EmployeeSerIml.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/Service/User/CustomUserDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/Service/User/CustomUserDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/Service/User/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/Service/User/UserServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/auth/JwtToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/auth/AuthResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/exception/CustomException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/entity/Roles.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/entity/Roles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/exception/ErrorDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/exception/ErrorDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/payload/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/payload/LoginRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/payload/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/payload/LoginResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtAuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/JwtTokenProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/java/io/dev/gateway/security/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/gateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/lib/j2ee.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../untitled/logs/mylog.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../untitled/logs/mylog.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/logs/mylog.log.2021-12-10.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../untitled/logs/mylog.log.2021-12-13.0.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.vue" afterDir="false" />
@@ -74,7 +73,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="ts.external.directory.path" value="D:\spring\dsp\vue\demo\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\cruid\dsp\vue\demo\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -91,6 +90,9 @@
       <workItem from="1639495643861" duration="320000" />
       <workItem from="1639496880481" duration="2888000" />
       <workItem from="1639500543511" duration="2292000" />
+      <workItem from="1639582810543" duration="2545000" />
+      <workItem from="1639738324231" duration="59000" />
+      <workItem from="1639934287375" duration="2480000" />
     </task>
     <servers />
   </component>

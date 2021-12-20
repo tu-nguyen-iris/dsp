@@ -20,7 +20,7 @@ public class Jobs {
     @Getter
     private Long jobId;
 
-    @Column
+    @Column(nullable = false)
     @Setter
     @Getter
     private String jobTitle;

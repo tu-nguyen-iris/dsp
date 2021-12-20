@@ -7,6 +7,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Created by TuNguyen
+ * In 12/14/2021
+ */
 @Setter
 @Getter
 public class ErrorDetails {
@@ -16,6 +20,14 @@ public class ErrorDetails {
     Map<String, Object> response = new HashMap<>();
     private Integer code;
 
+    /**
+     *
+     * @param timestamp
+     * @param message
+     * @param details
+     * @param code
+     * @param response
+     */
     public ErrorDetails(Date timestamp, String message, String details, Integer code, Map<String, Object> response) {
         super();
         this.timestamp = timestamp;

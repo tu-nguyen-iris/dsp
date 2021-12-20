@@ -3,11 +3,8 @@ package io.dev.gateway.payload;
 import lombok.Data;
 
 /**
- * Copyright 2019 {@author Loda} (https://loda.me).
- * This project is licensed under the MIT license.
- *
- * @since 5/1/2019
- * Github: https://github.com/loda-kun
+ * Created by TuNguyen
+ * In 12/14/2021
  */
 @Data
 public class LoginRequest {

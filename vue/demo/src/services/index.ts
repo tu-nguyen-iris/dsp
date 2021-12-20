@@ -5,6 +5,16 @@ import {WarningOutlined} from "@ant-design/icons-vue";
 import router from "../routes";
 
 class Services {
+    private static instance: Services;
+
+    public static getInstance(): Services {
+        if (!Services.instance) {
+            Services.instance = new Services();
+        }
+
+        return Services.instance;
+    }
+
     public link: string = "http://localhost:8762/"
     _exData = async (data: any) => {
         try {
@@ -103,7 +113,7 @@ class Services {
         try {
             let res = await axios.post(this.link + 'users/employees',
                 obj,
-                {   headers: this._initHeader()}
+                {headers: this._initHeader()}
             )
             return this._exData(res)
         } catch (e) {
@@ -148,9 +158,6 @@ class Services {
     }
 }
 
-const
-    instance = new Services();
-Object
-    .freeze(instance);
-
+const instance = Services.getInstance();
+Object.freeze(instance);
 export default instance;

@@ -17,15 +17,14 @@ import javax.transaction.Transactional;
  */
 @Service
 public class UserServiceImp implements UserDetailsService {
-    @Value("${io.dev.secret}")
-    private String JWT_SECRET ;
     @Autowired
     private UserRepo userRepo;
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        // Kiểm tra xem user có tồn tại trong database không?
+        // check if user exist
         User user = userRepo.findByUsername(username);
+        System.out.println(user);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }

@@ -1,6 +1,7 @@
 package io.dev.employees.controller;
 
 import io.dev.employees.config.ResponseModified;
+import io.dev.employees.config.SystemMessage;
 import io.dev.employees.dto.employee.EmployeeDto;
 import io.dev.employees.dto.employee.EmployeeDtoDetail;
 import io.dev.employees.services.Employees.EmployeeSevices;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -49,13 +51,13 @@ public class EmployeeControler {
             EmployeeDtoDetail data = employeeSevices.getDetailEmployees(id);
             Map<String, Object> res = new HashMap<>();
             if (data == null) {
-                return new ResponseEntity<>(new ResponseModified(0, "EMPLOYEES NOT FOUND!", null), HttpStatus.OK);
+                return new ResponseEntity<>(new ResponseModified(0, SystemMessage.EMPLOYEES_NOT_FOUND, null), HttpStatus.OK);
             } else {
                 res.put("detail", data);
-                return new ResponseEntity<>(new ResponseModified(1, "SUCCESS", res), HttpStatus.OK);
+                return new ResponseEntity<>(new ResponseModified(1, SystemMessage.HANDLE_SUCCESS, res), HttpStatus.OK);
             }
         } catch (Exception e) {
-            return new ResponseEntity<>(new ResponseModified(0, "ERROR", null), HttpStatus.EXPECTATION_FAILED);
+            return new ResponseEntity<>(new ResponseModified(0, "ERROR", null), HttpStatus.OK);
         }
     }
 
@@ -64,13 +66,13 @@ public class EmployeeControler {
         try {
             boolean result = employeeSevices.deleteByEmployeeId(employee_id);
             if (result) {
-                return new ResponseEntity<>(new ResponseModified(1, "DELETE SUCCESS", null), HttpStatus.OK);
+                return new ResponseEntity<>(new ResponseModified(1, SystemMessage.DELETE_SUCCESS, null), HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(new ResponseModified(0, "Có lỗi xảy ra", null), HttpStatus.OK);
+                return new ResponseEntity<>(new ResponseModified(0, SystemMessage.HAS_AN_ERROR, null), HttpStatus.OK);
             }
 
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(new ResponseModified(0, SystemMessage.HAS_AN_ERROR, null), HttpStatus.OK);
         }
     }
 
@@ -81,7 +83,7 @@ public class EmployeeControler {
             ResponseModified res = employeeSevices.addAnEmployee(employeeDto);
             return new ResponseEntity<>(res, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(new ResponseModified(0, SystemMessage.HAS_AN_ERROR, null), HttpStatus.OK);
         }
     }
 
@@ -91,11 +93,12 @@ public class EmployeeControler {
             ResponseModified result = employeeSevices.editEmployee(employeeDto);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(new ResponseModified(0, "Có lỗi xảy ra", null), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ResponseModified(0, SystemMessage.HAS_AN_ERROR, null), HttpStatus.BAD_REQUEST);
         }
     }
 
     @PostMapping("/delete_employee")
+    @PreAuthorize("hasAuthority('EDITOR')")
     public ResponseEntity delMultiUser(@RequestBody List<Long> lst_employees) {
         try {
             boolean result = employeeSevices.delMultiEmployees(lst_employees);

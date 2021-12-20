@@ -36,7 +36,6 @@ interface formState {
 export default {
   name: "Login",
   setup() {
-    const formRef = ref();
     const formState = reactive<formState>({
       username: "",
       password: ""
@@ -64,14 +63,13 @@ export default {
         notification.open({
           message: 'Register success',
           description:
-              'Has an error. Try again',
+              'Register success',
           icon: h(CheckOutlined, {style: 'color: blue'}),
           duration: 3,
         });
       } catch (e) {
         console.log(e)
       }
-
     }
     return {
       formState,
@@ -148,7 +146,7 @@ label {
 
 .social-icons {
   text-align: center;
-  font-family: "Open Sans";
+  font-family: "Open Sans",sans-serif;
   font-weight: 300;
   font-size: 1.5em;
   color: #222222;

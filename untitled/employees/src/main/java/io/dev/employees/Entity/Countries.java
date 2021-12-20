@@ -17,7 +17,7 @@ public class Countries {
     @Getter
     private Long countryId;
 
-    @Column
+    @Column(nullable = false)
     @Setter
     @Getter
     private String country_name;
